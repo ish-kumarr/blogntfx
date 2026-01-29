@@ -1,0 +1,20 @@
+# https://www.robotstxt.org/robotstxt.html
+# New TradeFx Blog - blogs.tradefxservices.com
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://blogs.tradefxservices.com/sitemap.xml

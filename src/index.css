@@ -1,0 +1,337 @@
+@import '@fontsource/playfair-display/400.css';
+@import '@fontsource/playfair-display/500.css';
+@import '@fontsource/playfair-display/600.css';
+@import '@fontsource/playfair-display/700.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 212 83% 44%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 119 91% 65%;
+    --secondary-foreground: 220 20% 10%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 212 83% 94%;
+    --accent-foreground: 212 83% 30%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 90%;
+    --input: 220 13% 90%;
+    --ring: 212 83% 44%;
+
+    --radius: 0.5rem;
+
+    /* Custom finance theme variables - light mode */
+    --navy-deep: 220 20% 96%;
+    --navy-dark: 220 15% 92%;
+    --navy-medium: 220 10% 88%;
+    --slate-dark: 215 15% 30%;
+    --slate-light: 215 10% 50%;
+    --gold: 212 83% 44%;
+    --gold-muted: 212 60% 55%;
+    --text-primary: 220 20% 10%;
+    --text-secondary: 220 10% 35%;
+    --text-muted: 220 10% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+@layer components {
+  .heading-hero {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .heading-section {
+    @apply text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .heading-card {
+    @apply text-xl md:text-2xl font-semibold leading-snug;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .heading-article {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .body-large {
+    @apply text-lg md:text-xl leading-relaxed;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .body-regular {
+    @apply text-base leading-relaxed;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .body-small {
+    @apply text-sm leading-relaxed;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .label-text {
+    @apply text-xs uppercase tracking-wider font-medium;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Blog content styles */
+  .blog-content {
+    @apply body-regular;
+  }
+
+  .blog-content h2 {
+    @apply text-2xl md:text-3xl font-bold mt-12 mb-6 text-foreground;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .blog-content h3 {
+    @apply text-xl md:text-2xl font-semibold mt-10 mb-4 text-foreground;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .blog-content p {
+    @apply mb-6 text-foreground/80 text-lg md:text-xl leading-[1.8];
+  }
+
+  .blog-content ul, .blog-content ol {
+    @apply mb-8 ml-1 space-y-3;
+  }
+
+  .blog-content li {
+    @apply text-foreground/80 text-lg md:text-xl leading-relaxed pl-6 relative;
+  }
+
+  .blog-content ul li::before {
+    content: '';
+    @apply absolute left-0 top-3 w-1.5 h-1.5 rounded-full bg-primary;
+  }
+
+  .blog-content ol {
+    counter-reset: list-counter;
+  }
+
+  .blog-content ol li {
+    counter-increment: list-counter;
+    @apply list-none;
+  }
+
+  .blog-content ol li::before {
+    content: counter(list-counter) ".";
+    @apply absolute left-0 font-semibold text-primary;
+  }
+
+  .blog-content blockquote {
+    @apply border-l-4 border-primary pl-6 py-2 my-10 italic text-foreground/70 text-xl md:text-2xl;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .blog-content strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .blog-content a {
+    @apply text-primary underline underline-offset-2 hover:text-primary/80 transition-colors;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply transform -translate-y-1;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Glass morphism */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70;
+  }
+
+  /* Gradient overlays */
+  .gradient-overlay {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      hsl(0 0% 100% / 0.6) 50%,
+      hsl(0 0% 100%) 100%
+    );
+  }
+
+  /* Reading progress bar */
+  .reading-progress {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--gold)) 0%,
+      hsl(var(--gold-muted)) 100%
+    );
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium
+           transition-all duration-200 hover:opacity-90 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-md font-medium
+           border border-border transition-all duration-200 hover:bg-muted;
+  }
+
+  /* Category badge */
+  .category-badge {
+    @apply label-text px-3 py-1.5 rounded-full bg-muted text-muted-foreground
+           border border-border transition-colors duration-200
+           hover:bg-secondary hover:text-secondary-foreground cursor-pointer;
+  }
+
+  .category-badge.active {
+    @apply bg-primary text-primary-foreground;
+  }
+}
+
+@layer utilities {
+  .text-text-primary {
+    color: hsl(var(--text-primary));
+  }
+
+  .text-text-secondary {
+    color: hsl(var(--text-secondary));
+  }
+
+  .text-text-muted {
+    color: hsl(var(--text-muted));
+  }
+
+  .bg-navy-deep {
+    background-color: hsl(var(--navy-deep));
+  }
+
+  .bg-navy-dark {
+    background-color: hsl(var(--navy-dark));
+  }
+
+  .bg-navy-medium {
+    background-color: hsl(var(--navy-medium));
+  }
+
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+
+  .bg-gold {
+    background-color: hsl(var(--gold));
+  }
+
+  .border-gold {
+    border-color: hsl(var(--gold));
+  }
+
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  /* Subtle pattern background */
+  .pattern-dots {
+    background-image: radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
